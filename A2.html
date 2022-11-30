@@ -1,0 +1,252 @@
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>A2 19-10</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 m-auto mt-5">
+                <div>
+                    <div class="p-5 mb-4 bg-light rounded-3 shadow">
+                        <div class="container-fluid p-1">
+                          <h1 class="display-5 fw-bold">CALCULATOR</h1>
+                          <div class="mb-3">
+                            <label for="num1" class="number1">Number1</label>
+                            <input type="text" class="form-control" id="num1" name="num1" onkeyup="validateinput(this);">
+                          </div>
+                          <div class="mb-3">
+                            <label for="num2" class="form-label">Number2</label>
+                            <input type="text" class="form-control" id="num2" name="num2" onkeyup="validateinput(this);">
+                          </div>
+                          <div class="mb-3">
+                            <button type="button" onclick="add()" class="btn btn-outline-primary">+</button>
+                            <button type="button" onclick="sub()" class="btn btn-outline-secondary">-</button>
+                            <button type="button" onclick="multi()" class="btn btn-outline-success">*</button>
+                            <button type="button" onclick="division()" class="btn btn-outline-success">/</button>
+                             <button type="button" onclick="findEvenOdd()" class="btn btn-outline-info">Even or Odd</button>
+                          </div>
+                          <div class="alert alert-primary" role="alert" id="resultbox">
+                           Please enter number to calculate
+                          </div>  
+                        </div>
+                      </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function add()
+    {
+        n1 = document.getElementById('num1').value;
+        n2 = document.getElementById('num2').value;
+
+       /*if(n1 == '' && n2== '')
+         {
+            alert('enter a  valid input');
+            return;
+            if(n1 != '' && n2 =='')
+            {
+               alert('enter a  valid input');
+               return; 
+            }
+            if(n1 == '' && n2 !='')
+            {
+               alert('enter a  valid input');
+               return; 
+            }
+           
+        }*/
+
+       if( n1 =='' || n2 =='' )
+        {
+            //select element
+            element = document.getElementById("resultbox");
+            //remove class
+            element.classList.remove("alert-primary");
+            //add alert-danger
+            element.classList.add("alert-danger");
+            //updating content
+            element.innerHTML = 'please enter valid input';
+              
+       if (n1=='')
+        {
+            //for number 1 input box
+            element = document.getElementById("num1");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            return;
+        }
+        if (n2=='')
+        {
+            //for number 2 input box
+            element = document.getElementById("num2");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            return;
+        }
+        }
+        
+      /* if (n1=='')
+        {
+            //for number 1 input box
+            element = document.getElementById("num1");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            //select element 
+            element = document.getElementById("resultbox");
+            //remove class
+            element.classList.remove("alert-primary");
+            //add alert-danger
+            element.classList.add("alert-danger");
+            //updating content
+            element.innerHTML = 'please enter valid input';
+            return;
+        }
+        if (n2=='')
+        {
+            //for number 2 input box
+            element = document.getElementById("num2");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            //select element 
+            element = document.getElementById("resultbox");
+            //remove class
+            element.classList.remove("alert-primary");
+            //add alert-danger
+            element.classList.add("alert-danger");
+            //updating content
+            element.innerHTML = 'please enter valid input';
+            return;
+        }*/
+    
+        result = parseInt(n1) + parseInt(n2) ;
+        resultText = "result: "+ result
+        document.getElementById("resultbox").innerHTML = resultText;
+    }
+    function sub()
+    {
+        n1 = document.getElementById('num1').value;
+        n2 = document.getElementById('num2').value;
+       /* if (n1=='')
+        {
+            alert('please enter Number 1')
+            return;
+        }
+        if (n2=='')
+        {
+            alert('please enter Number 2')
+            return;
+        }*/
+        result = parseInt(n1) - parseInt(n2) ;
+        resultText = "result: "+ result
+        document.getElementById("resultbox").innerHTML = resultText;
+    }
+    function multi()
+    {
+        n1 = document.getElementById('num1').value; 
+        n2 = document.getElementById('num2').value;
+        /*
+        if (n1=='')
+        {
+            alert('please enter Number 1')
+            return;
+        }
+        if (n2=='')
+        {
+            alert('please enter Number 2')
+            return;
+        }
+        */
+        result = parseInt(n1) * parseInt(n2) ;
+        resultText = "result: "+ result 
+        document.getElementById("resultbox").innerHTML = (resultText);
+    }
+    function division()
+    {
+        n1 = document.getElementById('num1').value;
+        n2 = document.getElementById('num2').value;
+        /*
+        if (n1=='')
+        {
+            alert('please enter Number 1')
+            return;
+        }
+        if (n2=='')
+        {
+            alert('please enter Number 2')
+            return;
+        }*/
+        result = parseInt(n1) / parseInt(n2) ;
+        resultText = "result: "+ result
+        document.getElementById("resultbox").innerHTML = resultText;
+    }
+    function findEvenOdd()
+    {
+       
+        n1 = document.getElementById('num1').value;
+        remainder = n1 % 2 ;
+        result = '' ;
+        /* if else case*/
+        if(remainder ==  0)
+        {
+            result= "even" ;
+        }
+        else{
+            result = "odd"
+        }
+        document.getElementById("resultbox").innerHTML = 'It is ' + result + ' number';
+         /*
+        n1 = document.getElementById('num1').value;
+        remainder = n1 % 2 ;
+        result = 'odd';
+        if(remainder ==  0)
+        {
+            result= 'even' ;
+        }
+        document.getElementById("resultbox").innerHTML = 'It is ' + result + ' number';*/
+    }
+    function validateinput(el)
+    {
+        number = el.value;
+       
+        if(isNaN(number))
+        {
+
+            element = document.getElementById("resultbox");
+            element.classList.remove("alert-primary");
+            element.classList.add("alert-danger");
+            element.innerHTML = 'please enter valid input';
+            if (isNaN(number))
+        {
+            //for number 1 input box
+            element = document.getElementById("num1");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            return;
+        }
+        if (isNaN(number))
+        {
+            //for number 2 input box
+            element = document.getElementById("num2");
+            //add alert-danger
+            element.classList.add("bg-danger");
+            return;
+        }
+            /*if(isstring(number))
+            {
+                el.value ='';
+                return;
+            }*/
+        }
+    }
+   
+</script>
+</html>
